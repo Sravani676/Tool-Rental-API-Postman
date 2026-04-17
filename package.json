@@ -1,0 +1,12 @@
+{
+  "name": "tool-rental-api-tests",
+  "version": "1.0.0",
+  "description": "Postman API tests for Simple Tool Rental API",
+  "scripts": {
+    "test": "newman run postman/collection.json --env-var token=$API_TOKEN"
+  },
+  "devDependencies": {
+    "newman": "^6.0.0",
+    "newman-reporter-htmlextra": "^1.22.11"
+  }
+}
