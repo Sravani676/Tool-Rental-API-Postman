@@ -108,10 +108,10 @@
                   "    pm.response.to.have.status(200);\r",
                   "});\r",
                   "\r",
-                  "pm.test(\"Setting the global toolId value\", ()=> {\r",
+                  "pm.test(\"Setting the collectionVariables toolId value\", ()=> {\r",
                   "    if(tool) {\r",
                   "        pm.expect(tool).to.have.property('id')\r",
-                  "        pm.globals.set(\"toolId\", tool.id);\r",
+                  "        pm.collectionVariables.set(\"toolId\", tool.id);\r",
                   "        category = tool.category\r",
                   "    }\r",
                   "})\r",
@@ -173,7 +173,7 @@
                   "});\r",
                   "\r",
                   "pm.test(\"Tool ID is correct\", () => {\r",
-                  "    pm.expect(response.id).to.eql(pm.globals.get(\"toolId\"))\r",
+                  "    pm.expect(response.id).to.eql(pm.collectionVariables.get(\"toolId\"))\r",
                   "});\r",
                   "\r",
                   "pm.test(\"current stock is greater than 0\", () => {\r",
@@ -226,8 +226,8 @@
                   "    pm.expect(response).to.have.property(\"orderId\").and.is.not.empty\r",
                   "});\r",
                   "\r",
-                  "pm.test(\"Setting the global orderId\", ()=> {\r",
-                  "    pm.globals.set(\"orderId\", response.orderId)\r",
+                  "pm.test(\"Setting the collectionVariables orderId\", ()=> {\r",
+                  "    pm.collectionVariables.set(\"orderId\", response.orderId)\r",
                   "})"
                 ],
                 "type": "text/javascript",
@@ -325,11 +325,11 @@
                   "});\r",
                   "\r",
                   "pm.test(\"Get order should have correct OrderId\", ()=> {\r",
-                  "    pm.expect(response.orderId).to.eql(pm.globals.get(\"orderId\"));\r",
+                  "    pm.expect(response.orderId).to.eql(pm.collectionVariables.get(\"orderId\"));\r",
                   "});\r",
                   "\r",
                   "pm.test(\"order response should have correct tool id\", ()=> {\r",
-                  "    pm.expect(response.toolId).to.eql(pm.globals.get(\"toolId\"));\r",
+                  "    pm.expect(response.toolId).to.eql(pm.collectionVariables.get(\"toolId\"));\r",
                   "});\r",
                   "\r",
                   "pm.test(\"order should have properties\", ()=> {\r",
@@ -410,7 +410,7 @@
               "script": {
                 "exec": [
                   "const fullName = pm.variables.replaceIn('{{$randomFullName}}');\r",
-                  "pm.globals.set(\"fullName\", fullName)"
+                  "pm.collectionVariables.set(\"fullName\", fullName)"
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -472,15 +472,15 @@
                   "});\r",
                   "\r",
                   "pm.test(\"Get order should have correct OrderId\", ()=> {\r",
-                  "    pm.expect(response.orderId).to.eql(pm.globals.get(\"orderId\"));\r",
+                  "    pm.expect(response.orderId).to.eql(pm.collectionVariables.get(\"orderId\"));\r",
                   "});\r",
                   "\r",
                   "pm.test(\"order response should have correct tool id\", ()=> {\r",
-                  "    pm.expect(response.toolId).to.eql(pm.globals.get(\"toolId\"));\r",
+                  "    pm.expect(response.toolId).to.eql(pm.collectionVariables.get(\"toolId\"));\r",
                   "});\r",
                   "\r",
                   "pm.test(\"Verify CustomerName after update order\", ()=> {\r",
-                  "    pm.expect(response.customerName).to.eql(pm.globals.get(\"fullName\"))\r",
+                  "    pm.expect(response.customerName).to.eql(pm.collectionVariables.get(\"fullName\"))\r",
                   "})\r",
                   "\r",
                   "pm.test(\"order should have properties\", ()=> {\r",
@@ -497,8 +497,12 @@
             {
               "listen": "prerequest",
               "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
                 "packages": {},
-                "type": "text/javascript"
+                "requests": {}
               }
             }
           ],
@@ -1035,7 +1039,7 @@
                   "script": {
                     "exec": [
                       "const fullName = pm.variables.replaceIn('{{$randomFullName}}');\r",
-                      "pm.globals.set(\"fullName\", fullName)"
+                      "pm.collectionVariables.set(\"fullName\", fullName)"
                     ],
                     "type": "text/javascript",
                     "packages": {},
@@ -1109,7 +1113,7 @@
                   "script": {
                     "exec": [
                       "const fullName = pm.variables.replaceIn('{{$randomFullName}}');\r",
-                      "pm.globals.set(\"fullName\", fullName)"
+                      "pm.collectionVariables.set(\"fullName\", fullName)"
                     ],
                     "type": "text/javascript",
                     "packages": {},
@@ -1183,7 +1187,7 @@
                   "script": {
                     "exec": [
                       "const fullName = pm.variables.replaceIn('{{$randomFullName}}');\r",
-                      "pm.globals.set(\"fullName\", fullName)"
+                      "pm.collectionVariables.set(\"fullName\", fullName)"
                     ],
                     "type": "text/javascript",
                     "packages": {},
@@ -1637,6 +1641,38 @@
     {
       "key": "invalidAuthToken",
       "value": "usguywetwety97ty3297t632957uiefgshgfw756327563295258"
+    },
+    {
+      "key": "orderId",
+      "value": "Ar0MvgbBXdayDA2XCepWc"
+    },
+    {
+      "key": "toolId",
+      "value": "4643"
+    },
+    {
+      "key": "updateOrder",
+      "value": "wJpKWtKK8XcHJEzULlNO0"
+    },
+    {
+      "key": "fullName",
+      "value": "Owen Langosh"
+    },
+    {
+      "key": "invalidToolId",
+      "value": "99999"
+    },
+    {
+      "key": "invalidOrderId",
+      "value": "*^%#(*^%(@*^%"
+    },
+    {
+      "key": "nonExistentOrderId",
+      "value": "nonExistentOrder99999"
+    },
+    {
+      "key": "blankUsername",
+      "value": "          "
     }
   ]
 }
