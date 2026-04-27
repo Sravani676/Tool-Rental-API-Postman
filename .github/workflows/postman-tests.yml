@@ -1,9 +1,19 @@
 name: Postman API Tests
 
 on:
-  schedule:
-    - cron: '0 17 * * *'   # Runs every day at 10:00 AM PST
-  workflow_dispatch:         # Allows manual trigger from GitHub UI
+    push:
+        branches:
+            - main
+        paths:
+            - 'postman/**'          # only triggers when collection changes on push
+    pull_request:
+        branches:
+            - main
+        paths:
+            - 'postman/**'
+    schedule:
+        - cron: '0 17 * * *'   # Runs every day at 10:00 AM PST
+    workflow_dispatch:         # Allows manual trigger from GitHub UI
 
 jobs:
   newman-run:
